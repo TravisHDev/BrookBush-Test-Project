@@ -3,6 +3,7 @@ import client from "../apollo-client";
 
 import Head from 'next/head'
 import Button from './button';
+import { useEffect, useState } from "react";
 
 export async function getStaticProps() {
   const { data } = await client.query({
@@ -37,6 +38,16 @@ export async function getStaticProps() {
 }
 
 export default function Home({ people }) {
+  const [pokeData, setPokeData] = useState();
+  useEffect(() => {
+    fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+      .then(res => res.json())
+      .then(data => {
+        setPokeData(data);
+        console.log(data);
+      })
+  })
+
   return (
     <div className='bg-gray-100 p-20'>
       <Head>

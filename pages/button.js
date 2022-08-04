@@ -3,7 +3,6 @@ import { useState } from "react";
 const Button = ({
     person
 }) => {
-    console.log(person)
     const [toggle, setToggle] = useState(false);
     return (
         <div className="relative">
