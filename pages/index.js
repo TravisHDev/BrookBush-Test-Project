@@ -1,9 +1,10 @@
-import { useEffect} from "react";
 import { gql } from "@apollo/client";
 import Head from 'next/head'
 
 import client from "../apollo-client";
 import Card from "./Card";
+import handler from "./api/hello";
+import { useEffect } from "react";
 
 export async function getStaticProps() {
   const { data } = await client.query({
@@ -39,12 +40,10 @@ export async function getStaticProps() {
 
 export default function Home({ people }) {
   useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon/ditto')
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-      })
-  });
+    handler().then((data) => {
+      console.log(data);
+    })
+  }, []);
 
   return (
     <div className='bg-gray-100 p-20'>
