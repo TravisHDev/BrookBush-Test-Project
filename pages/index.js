@@ -2,9 +2,6 @@ import { gql } from "@apollo/client";
 import client from "../apollo-client";
 
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import { Dropdown } from "flowbite-react";
-import { useState } from "react";
 import Button from './button';
 
 export async function getStaticProps() {
